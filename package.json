@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^12.1.10",
     "bootstrap": "^4.5.3",
     "core-js": "^3.8.2",
+    "global": "^4.4.0",
     "moment": "^2.29.1",
     "react": "^17.0.1",
     "react-app-polyfill": "^2.0.0",
@@ -21,7 +22,7 @@
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-script-tag": "^1.1.2",
-    "react-scripts": "^3.2.0",
+    "react-scripts": "^4.0.3",
     "react-snap": "^1.23.0",
     "react-typist": "^2.0.5",
     "regenerator-runtime": "^0.13.7",
@@ -37,14 +38,18 @@
     "postbuild": "react-snap"
   },
   "reactSnap": {
-    "puppeteerArgs": ["--no-sandbox", "--disable-setuid-sandbox", "--disable-gpu"],
+    "puppeteerArgs": [
+      "--no-sandbox",
+      "--disable-setuid-sandbox",
+      "--disable-gpu"
+    ],
     "skipThirdPartyRequests": true,
     "minifyHtml": {
       "collapseWhitespace": true,
       "removeComments": true
     },
     "cacheAjaxRequests": false,
-    "include":[
+    "include": [
       "/",
       "/kapable.github.io/zipkok",
       "/kapable.github.io/daengdaeng",

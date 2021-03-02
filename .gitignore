@@ -94,3 +94,15 @@ fabric.properties
 
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
+
+.gradle/
+.idea/
+build/
+gradle/
+# 이거 gradle 용으로 아무래도 필요해보이는 파일 같다
+#gradlew
+#gradlew.bat
+out/
+libs/
+settings.gradle
+/src/test

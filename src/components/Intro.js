@@ -40,6 +40,7 @@ class Intro extends Component {
 
         // for applying meta tag url with slash -> prevent doulbe slash at the last chars in the sharable url
         let _sharable_url = window.location.href
+        console.log(_sharable_url)
         if(window.location.href.slice(-1) === '/'){
             _sharable_url = window.location.href.slice(0, -1)
         } else {
@@ -47,6 +48,7 @@ class Intro extends Component {
         }
 
         // get Full Today
+        // padStart 쓰면 눈물나게 length 체크해서 0 써주고 그런거 안 해도 되겠네
         let today = new Date();
         let month = String(today.getMonth() + 1)//.padStart(2, '0');
         let date = String(today.getDate()).padStart(2, '0');

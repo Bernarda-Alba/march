@@ -8,7 +8,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Result from './components/Result';
 import ScriptTag from 'react-script-tag'
 import { Helmet } from 'react-helmet';
-import ReactGA from 'react-ga';
 
 
 class App extends Component {
@@ -46,21 +45,21 @@ class App extends Component {
       sharable_url:_sharable_url,
     }
   }
-  componentDidMount(){
-    ReactGA.initialize('UA-186793588-1', {
-      debug: false,
-      gaOptions:{
-        siteSpeedSampleRate: 100
-      }
-    });
-    ReactGA.set({page:window.location.pathname+window.location.search})
-    ReactGA.pageview(window.location.pathname+window.location.search);
-
-    // if condition for Adsense domain
-    if(this.state.sharable_url.includes("niair.xyz")){
-      if(window) (window.adsbygoogle = window.adsbygoogle || []).push({});
-    }
-  }
+  // componentDidMount(){
+  //   ReactGA.initialize('UA-186793588-1', {
+  //     debug: false,
+  //     gaOptions:{
+  //       siteSpeedSampleRate: 100
+  //     }
+  //   });
+  //   ReactGA.set({page:window.location.pathname+window.location.search})
+  //   ReactGA.pageview(window.location.pathname+window.location.search);
+  //
+  //   // if condition for Adsense domain
+  //   if(this.state.sharable_url.includes("niair.xyz")){
+  //     if(window) (window.adsbygoogle = window.adsbygoogle || []).push({});
+  //   }
+  // }
   reloadPage() {
     var currentDocumentTimestamp = new Date(performance.timing.domLoading).getTime();
     var now = Date.now();
@@ -69,100 +68,100 @@ class App extends Component {
     if (now > plusTenSec) { window.location.reload(); } else {}
   }
 
-  cpcBannerUpperScriptor(){
-    if( this.state.sharable_url.includes("ktestone.com") || this.state.sharable_url.includes("localhost") ) {
-      return(
-        <Fragment>
-          <ins className="kakao_ad_area" style={{display:"none"}}
-          data-ad-unit    = "DAN-q3lQrzFnTNGEBQSA"
-          data-ad-width   = "320"
-          data-ad-height  = "100"></ins>
-          <ScriptTag type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></ScriptTag>
-        </Fragment>
-      )
-    } else if(this.state.sharable_url.includes("https://kapable.github.io/")) {
-      return(
-        <Fragment>
-          <ins className="kakao_ad_area" style={{display:"none"}}
-          data-ad-unit    = "DAN-2heOjnHUdZLjBuFC"
-          data-ad-width   = "320"
-          data-ad-height  = "100"></ins>
-          <ScriptTag type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></ScriptTag>
-        </Fragment>
-      )
-    } else if(this.state.sharable_url.includes("niair.xyz")) {
-      return(
-        <Fragment>
-          <Helmet>
-            <script data-ad-client="ca-pub-2382342018701919" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-          </Helmet>
-        </Fragment>
-      )
-    }
-  }
+  // cpcBannerUpperScriptor(){
+  //   if( this.state.sharable_url.includes("ktestone.com") || this.state.sharable_url.includes("localhost") ) {
+  //     return(
+  //       <Fragment>
+  //         <ins className="kakao_ad_area" style={{display:"none"}}
+  //         data-ad-unit    = "DAN-q3lQrzFnTNGEBQSA"
+  //         data-ad-width   = "320"
+  //         data-ad-height  = "100"></ins>
+  //         <ScriptTag type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></ScriptTag>
+  //       </Fragment>
+  //     )
+  //   } else if(this.state.sharable_url.includes("https://kapable.github.io/")) {
+  //     return(
+  //       <Fragment>
+  //         <ins className="kakao_ad_area" style={{display:"none"}}
+  //         data-ad-unit    = "DAN-2heOjnHUdZLjBuFC"
+  //         data-ad-width   = "320"
+  //         data-ad-height  = "100"></ins>
+  //         <ScriptTag type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></ScriptTag>
+  //       </Fragment>
+  //     )
+  //   } else if(this.state.sharable_url.includes("niair.xyz")) {
+  //     return(
+  //       <Fragment>
+  //         <Helmet>
+  //           <script data-ad-client="ca-pub-2382342018701919" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  //         </Helmet>
+  //       </Fragment>
+  //     )
+  //   }
+  // }
 
-  cpcBannerFooterScriptor(){
-    if(this.state.sharable_url.includes("localhost") || this.state.sharable_url.includes("ktestone.com")) {
-      return(
-        <Fragment>
-          <ins className="kakao_ad_area" style={{display:"none"}}
-          data-ad-unit    = "DAN-M3XcjSrV4BrUGCJG"
-          data-ad-width   = "300"
-          data-ad-height  = "250"></ins>
-          <ScriptTag type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></ScriptTag>
-        </Fragment>
-      )
-    } else if(this.state.sharable_url.includes("https://kapable.github.io/")) {
-      return(
-        <Fragment>
-          <ins className="kakao_ad_area" style={{display:"none"}}
-          data-ad-unit    = "DAN-rgfAOJhp6Faz2JFX"
-          data-ad-width   = "300"
-          data-ad-height  = "250"></ins>
-          <ScriptTag type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></ScriptTag>
-        </Fragment>
-      )
-    } else if(this.state.sharable_url.includes("niair.xyz")) {
-      return(
-        <Fragment>
-          {/* 반응형 기본 */}
-          <ins className="adsbygoogle"
-             style={{display:"block"}}
-             data-ad-client="ca-pub-2382342018701919"
-             data-ad-slot="8429103833"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-        </Fragment>
-      )
-    }
-  }
+  // cpcBannerFooterScriptor(){
+  //   if(this.state.sharable_url.includes("localhost") || this.state.sharable_url.includes("ktestone.com")) {
+  //     return(
+  //       <Fragment>
+  //         <ins className="kakao_ad_area" style={{display:"none"}}
+  //         data-ad-unit    = "DAN-M3XcjSrV4BrUGCJG"
+  //         data-ad-width   = "300"
+  //         data-ad-height  = "250"></ins>
+  //         <ScriptTag type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></ScriptTag>
+  //       </Fragment>
+  //     )
+  //   } else if(this.state.sharable_url.includes("https://kapable.github.io/")) {
+  //     return(
+  //       <Fragment>
+  //         <ins className="kakao_ad_area" style={{display:"none"}}
+  //         data-ad-unit    = "DAN-rgfAOJhp6Faz2JFX"
+  //         data-ad-width   = "300"
+  //         data-ad-height  = "250"></ins>
+  //         <ScriptTag type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></ScriptTag>
+  //       </Fragment>
+  //     )
+  //   } else if(this.state.sharable_url.includes("niair.xyz")) {
+  //     return(
+  //       <Fragment>
+  //         {/* 반응형 기본 */}
+  //         <ins className="adsbygoogle"
+  //            style={{display:"block"}}
+  //            data-ad-client="ca-pub-2382342018701919"
+  //            data-ad-slot="8429103833"
+  //            data-ad-format="auto"
+  //            data-full-width-responsive="true"></ins>
+  //       </Fragment>
+  //     )
+  //   }
+  // }
 
-  buyMeACoffeeBtn(){
-    if (window.location.href.includes("personalIncense")){
-      return(null);
-    } else {
-      return(
-        <div>
-          <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://www.buymeacoffee.com/ktestone"
-              className="to-buymeacoffee-link"
-          ><button
-              className="to-buymeacoffee-btn">
-                Buy Me A Coffee, Click!
-            </button>
-          </a>
-        </div>
-      )
-    }
-  }
+  // buyMeACoffeeBtn(){
+  //   if (window.location.href.includes("personalIncense")){
+  //     return(null);
+  //   } else {
+  //     return(
+  //       <div>
+  //         <a
+  //             target="_blank"
+  //             rel="noopener noreferrer"
+  //             href="https://www.buymeacoffee.com/ktestone"
+  //             className="to-buymeacoffee-link"
+  //         ><button
+  //             className="to-buymeacoffee-btn">
+  //               Buy Me A Coffee, Click!
+  //           </button>
+  //         </a>
+  //       </div>
+  //     )
+  //   }
+  // }
 
-  privateRoute(){
-    if (window.location.href.includes("index.html")){
-
-    }
-  }
+  // privateRoute(){
+  //   //   if (window.location.href.includes("index.html")){
+  //   //
+  //   //   }
+  //   // }
 
   render() {
     return(
@@ -172,7 +171,7 @@ class App extends Component {
       {this.reloadPage()}
 
       {/* CPC Banner Upper */}
-      {this.cpcBannerUpperScriptor()}
+      {/*this.cpcBannerUpperScriptor()*/}
 
       <Router basename='/kapable.github.io/'>
         <ScrollToTop>

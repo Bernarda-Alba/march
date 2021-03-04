@@ -173,7 +173,7 @@ class App extends Component {
       {/* CPC Banner Upper */}
       {/*this.cpcBannerUpperScriptor()*/}
 
-      <Router basename='/kapable.github.io/'>
+      <Router>
         <ScrollToTop>
           <Switch>
             {/* "Main" page */}
@@ -229,7 +229,7 @@ class App extends Component {
       </Router>
 
       {/* CPC Banner footer */}
-      {this.cpcBannerFooterScriptor()}
+      {/*{this.cpcBannerFooterScriptor()}*/}
 
       {/* BMAF Button */}
       {/* {this.buyMeACoffeeBtn()} */}

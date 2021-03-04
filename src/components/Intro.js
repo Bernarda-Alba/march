@@ -40,7 +40,6 @@ class Intro extends Component {
 
         // for applying meta tag url with slash -> prevent doulbe slash at the last chars in the sharable url
         let _sharable_url = window.location.href
-        console.log(_sharable_url)
         if(window.location.href.slice(-1) === '/'){
             _sharable_url = window.location.href.slice(0, -1)
         } else {
@@ -71,7 +70,7 @@ class Intro extends Component {
         this._onStartButtonClick = this._onStartButtonClick.bind(this);
         this._onMainButtonClick = this._onMainButtonClick.bind(this);
         this._onShareButtonClick = this._onShareButtonClick.bind(this);
-        this._eventSenderGA = this._eventSenderGA.bind(this);
+        // this._eventSenderGA = this._eventSenderGA.bind(this);
     }
 
     componentDidMount(){
@@ -81,15 +80,15 @@ class Intro extends Component {
         }
     }
 
-    _eventSenderGA(category, action, label){
-        ReactGA.event({
-            category: category,
-            action: action,
-            label: label
-          });
-    }
+    // _eventSenderGA(category, action, label){
+    //     ReactGA.event({
+    //         category: category,
+    //         action: action,
+    //         label: label
+    //       });
+    // }
     _onStartButtonClick(){
-        this._eventSenderGA("Paging", "Click Start-test Button", "intro page");
+        // this._eventSenderGA("Paging", "Click Start-test Button", "intro page");
         this.setState({
             mode:'quiz'
         })
@@ -99,199 +98,199 @@ class Intro extends Component {
         this.setState({
             mode:'main'
         })
-        this._eventSenderGA("Paging", "Click Back-to-main Button", "intro page");
+        // this._eventSenderGA("Paging", "Click Back-to-main Button", "intro page");
     }
 
     _onShareButtonClick(){
         this.setState({
             num_shares_count:this.state.num_shares_count+1
         })
-        this._eventSenderGA("Sharing", "Click Copy-link Button", "intro page");
-        alert("링크가 복사됐어요!");
+        // this._eventSenderGA("Sharing", "Click Copy-link Button", "intro page");
+        alert("COPIED!");
     }
-    cpcBannerIntroFooterScriptor(){
-        if( this.state.quiz_url.includes("ktestone.com")) {
-          return(
-            <Fragment>
-              <ins className="kakao_ad_area" style={{display:"none"}}
-                data-ad-unit    = "DAN-zutyUS1LJQDp2SK0"
-                data-ad-width   = "320"
-                data-ad-height  = "100"></ins>
-                <ScriptTag type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></ScriptTag>
-            </Fragment>
-          )
-        } else if(this.state.quiz_url.includes("https://kapable.github.io/")) {
-          return(
-            <Fragment>
-              <ins className="kakao_ad_area" style={{display:"none"}}
-                data-ad-unit    = "DAN-zIzDEpvl7LL78fMU"
-                data-ad-width   = "320"
-                data-ad-height  = "100"></ins>
-                <ScriptTag type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></ScriptTag>
-            </Fragment>
-          )
-        } else if(this.state.quiz_url.includes("localhost") || this.state.quiz_url.includes("niair.xyz")) {
-            return(
-              <Fragment>
-                {/* 인트로 공유 위 수평 */}
-                <ins className="adsbygoogle"
-                    style={{display:"block"}}
-                    data-ad-client="ca-pub-2382342018701919"
-                    data-ad-slot="3153221262"
-                    data-ad-format="auto"
-                    data-full-width-responsive="true"></ins>
-              </Fragment>
-            )
-          }
-      }
-    personalColorLinkRenderer(){
-        if(this.state.current_test.info.mainUrl === "personalColor") {
-            return(
-                <Fragment>
-                    <a
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href="https://ktestone.com/kapable.github.io/personalColorEng/"
-                        className="to-personalColorOut-test-banner-text"
-                    >[ Go to English version ]</a>
-                    <a
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href="https://ktestone.com/kapable.github.io/personalColorJP/"
-                        className="to-personalColorOut-test-banner-text"
-                    >[ 日本語バージョンをやりに行く。 ]</a>
-                    <a
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href="https://ktestone.com/kapable.github.io/personalColorCN/"
-                        className="to-personalColorOut-test-banner-text"
-                    >[ 汉语版本试 ]</a>
-                    <a
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href="https://ktestone.com/kapable.github.io/personalColorES/"
-                        className="to-personalColorOut-test-banner-text"
-                    >[ paso a la versión española ]</a>
-                </Fragment>
-            )
-        } else if(this.state.current_test.info.mainUrl === "personalColorJP") {
-            return(
-                <Fragment>
-                    <a
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href="https://ktestone.com/kapable.github.io/personalColor/"
-                        className="to-personalColorOut-test-banner-text"
-                    >[ 한국어 버전으로 하러가기 ]</a>
-                    <a
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href="https://ktestone.com/kapable.github.io/personalColorEng/"
-                        className="to-personalColorOut-test-banner-text"
-                    >[ Go to English version ]</a>
-                    <a
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href="https://ktestone.com/kapable.github.io/personalColorCN/"
-                        className="to-personalColorOut-test-banner-text"
-                    >[ 汉语版本试 ]</a>
-                    <a
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href="https://ktestone.com/kapable.github.io/personalColorES/"
-                        className="to-personalColorOut-test-banner-text"
-                    >[ paso a la versión española ]</a>
-                </Fragment>
-            )
-        } else if(this.state.current_test.info.mainUrl === "personalColorEng") {
-            return(
-                <Fragment>
-                    <a
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href="https://ktestone.com/kapable.github.io/personalColor/"
-                        className="to-personalColorOut-test-banner-text"
-                    >[ 한국어 버전으로 하러가기 ]</a>
-                    <a
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href="https://ktestone.com/kapable.github.io/personalColorJP/"
-                        className="to-personalColorOut-test-banner-text"
-                    >[ 日本語バージョンをやりに行く。 ]</a>
-                    <a
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href="https://ktestone.com/kapable.github.io/personalColorCN/"
-                        className="to-personalColorOut-test-banner-text"
-                    >[ 汉语版本试 ]</a>
-                    <a
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href="https://ktestone.com/kapable.github.io/personalColorES/"
-                        className="to-personalColorOut-test-banner-text"
-                    >[ paso a la versión española ]</a>
-                </Fragment>
-            )
-        } else if(this.state.current_test.info.mainUrl === "personalColorCN") {
-            return(
-                <Fragment>
-                    <a
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href="https://ktestone.com/kapable.github.io/personalColor/"
-                        className="to-personalColorOut-test-banner-text"
-                    >[ 한국어 버전으로 하러가기 ]</a>
-                    <a
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href="https://ktestone.com/kapable.github.io/personalColorJP/"
-                        className="to-personalColorOut-test-banner-text"
-                    >[ 日本語バージョンをやりに行く。 ]</a>
-                    <a
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href="https://ktestone.com/kapable.github.io/personalColorEng/"
-                        className="to-personalColorOut-test-banner-text"
-                    >[ Go to the English version ]</a>
-                    <a
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href="https://ktestone.com/kapable.github.io/personalColorES/"
-                        className="to-personalColorOut-test-banner-text"
-                    >[ paso a la versión española ]</a>
-                </Fragment>
-            )
-        } else if(this.state.current_test.info.mainUrl === "personalColorES") {
-            return(
-                <Fragment>
-                    <a
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href="https://ktestone.com/kapable.github.io/personalColor/"
-                        className="to-personalColorOut-test-banner-text"
-                    >[ 한국어 버전으로 하러가기 ]</a>
-                    <a
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href="https://ktestone.com/kapable.github.io/personalColorJP/"
-                        className="to-personalColorOut-test-banner-text"
-                    >[ 日本語バージョンをやりに行く。 ]</a>
-                    <a
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href="https://ktestone.com/kapable.github.io/personalColorEng/"
-                        className="to-personalColorOut-test-banner-text"
-                    >[ Go to the English version ]</a>
-                    <a
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href="https://niair.xyz/kapable.github.io/personalColorCN/"
-                        className="to-personalColorOut-test-banner-text"
-                    >[ 汉语版本试 ]</a>
-                </Fragment>
-            )
-        }
-    }
+    // cpcBannerIntroFooterScriptor(){
+    //     if( this.state.quiz_url.includes("ktestone.com")) {
+    //       return(
+    //         <Fragment>
+    //           <ins className="kakao_ad_area" style={{display:"none"}}
+    //             data-ad-unit    = "DAN-zutyUS1LJQDp2SK0"
+    //             data-ad-width   = "320"
+    //             data-ad-height  = "100"></ins>
+    //             <ScriptTag type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></ScriptTag>
+    //         </Fragment>
+    //       )
+    //     } else if(this.state.quiz_url.includes("https://kapable.github.io/")) {
+    //       return(
+    //         <Fragment>
+    //           <ins className="kakao_ad_area" style={{display:"none"}}
+    //             data-ad-unit    = "DAN-zIzDEpvl7LL78fMU"
+    //             data-ad-width   = "320"
+    //             data-ad-height  = "100"></ins>
+    //             <ScriptTag type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></ScriptTag>
+    //         </Fragment>
+    //       )
+    //     } else if(this.state.quiz_url.includes("localhost") || this.state.quiz_url.includes("niair.xyz")) {
+    //         return(
+    //           <Fragment>
+    //             {/* 인트로 공유 위 수평 */}
+    //             <ins className="adsbygoogle"
+    //                 style={{display:"block"}}
+    //                 data-ad-client="ca-pub-2382342018701919"
+    //                 data-ad-slot="3153221262"
+    //                 data-ad-format="auto"
+    //                 data-full-width-responsive="true"></ins>
+    //           </Fragment>
+    //         )
+    //       }
+    //   }
+    // personalColorLinkRenderer(){
+    //     if(this.state.current_test.info.mainUrl === "personalColor") {
+    //         return(
+    //             <Fragment>
+    //                 <a
+    //                     target="_blank"
+    //                     rel="noopener noreferrer"
+    //                     href="https://ktestone.com/kapable.github.io/personalColorEng/"
+    //                     className="to-personalColorOut-test-banner-text"
+    //                 >[ Go to English version ]</a>
+    //                 <a
+    //                     target="_blank"
+    //                     rel="noopener noreferrer"
+    //                     href="https://ktestone.com/kapable.github.io/personalColorJP/"
+    //                     className="to-personalColorOut-test-banner-text"
+    //                 >[ 日本語バージョンをやりに行く。 ]</a>
+    //                 <a
+    //                     target="_blank"
+    //                     rel="noopener noreferrer"
+    //                     href="https://ktestone.com/kapable.github.io/personalColorCN/"
+    //                     className="to-personalColorOut-test-banner-text"
+    //                 >[ 汉语版本试 ]</a>
+    //                 <a
+    //                     target="_blank"
+    //                     rel="noopener noreferrer"
+    //                     href="https://ktestone.com/kapable.github.io/personalColorES/"
+    //                     className="to-personalColorOut-test-banner-text"
+    //                 >[ paso a la versión española ]</a>
+    //             </Fragment>
+    //         )
+    //     } else if(this.state.current_test.info.mainUrl === "personalColorJP") {
+    //         return(
+    //             <Fragment>
+    //                 <a
+    //                     target="_blank"
+    //                     rel="noopener noreferrer"
+    //                     href="https://ktestone.com/kapable.github.io/personalColor/"
+    //                     className="to-personalColorOut-test-banner-text"
+    //                 >[ 한국어 버전으로 하러가기 ]</a>
+    //                 <a
+    //                     target="_blank"
+    //                     rel="noopener noreferrer"
+    //                     href="https://ktestone.com/kapable.github.io/personalColorEng/"
+    //                     className="to-personalColorOut-test-banner-text"
+    //                 >[ Go to English version ]</a>
+    //                 <a
+    //                     target="_blank"
+    //                     rel="noopener noreferrer"
+    //                     href="https://ktestone.com/kapable.github.io/personalColorCN/"
+    //                     className="to-personalColorOut-test-banner-text"
+    //                 >[ 汉语版本试 ]</a>
+    //                 <a
+    //                     target="_blank"
+    //                     rel="noopener noreferrer"
+    //                     href="https://ktestone.com/kapable.github.io/personalColorES/"
+    //                     className="to-personalColorOut-test-banner-text"
+    //                 >[ paso a la versión española ]</a>
+    //             </Fragment>
+    //         )
+    //     } else if(this.state.current_test.info.mainUrl === "personalColorEng") {
+    //         return(
+    //             <Fragment>
+    //                 <a
+    //                     target="_blank"
+    //                     rel="noopener noreferrer"
+    //                     href="https://ktestone.com/kapable.github.io/personalColor/"
+    //                     className="to-personalColorOut-test-banner-text"
+    //                 >[ 한국어 버전으로 하러가기 ]</a>
+    //                 <a
+    //                     target="_blank"
+    //                     rel="noopener noreferrer"
+    //                     href="https://ktestone.com/kapable.github.io/personalColorJP/"
+    //                     className="to-personalColorOut-test-banner-text"
+    //                 >[ 日本語バージョンをやりに行く。 ]</a>
+    //                 <a
+    //                     target="_blank"
+    //                     rel="noopener noreferrer"
+    //                     href="https://ktestone.com/kapable.github.io/personalColorCN/"
+    //                     className="to-personalColorOut-test-banner-text"
+    //                 >[ 汉语版本试 ]</a>
+    //                 <a
+    //                     target="_blank"
+    //                     rel="noopener noreferrer"
+    //                     href="https://ktestone.com/kapable.github.io/personalColorES/"
+    //                     className="to-personalColorOut-test-banner-text"
+    //                 >[ paso a la versión española ]</a>
+    //             </Fragment>
+    //         )
+    //     } else if(this.state.current_test.info.mainUrl === "personalColorCN") {
+    //         return(
+    //             <Fragment>
+    //                 <a
+    //                     target="_blank"
+    //                     rel="noopener noreferrer"
+    //                     href="https://ktestone.com/kapable.github.io/personalColor/"
+    //                     className="to-personalColorOut-test-banner-text"
+    //                 >[ 한국어 버전으로 하러가기 ]</a>
+    //                 <a
+    //                     target="_blank"
+    //                     rel="noopener noreferrer"
+    //                     href="https://ktestone.com/kapable.github.io/personalColorJP/"
+    //                     className="to-personalColorOut-test-banner-text"
+    //                 >[ 日本語バージョンをやりに行く。 ]</a>
+    //                 <a
+    //                     target="_blank"
+    //                     rel="noopener noreferrer"
+    //                     href="https://ktestone.com/kapable.github.io/personalColorEng/"
+    //                     className="to-personalColorOut-test-banner-text"
+    //                 >[ Go to the English version ]</a>
+    //                 <a
+    //                     target="_blank"
+    //                     rel="noopener noreferrer"
+    //                     href="https://ktestone.com/kapable.github.io/personalColorES/"
+    //                     className="to-personalColorOut-test-banner-text"
+    //                 >[ paso a la versión española ]</a>
+    //             </Fragment>
+    //         )
+    //     } else if(this.state.current_test.info.mainUrl === "personalColorES") {
+    //         return(
+    //             <Fragment>
+    //                 <a
+    //                     target="_blank"
+    //                     rel="noopener noreferrer"
+    //                     href="https://ktestone.com/kapable.github.io/personalColor/"
+    //                     className="to-personalColorOut-test-banner-text"
+    //                 >[ 한국어 버전으로 하러가기 ]</a>
+    //                 <a
+    //                     target="_blank"
+    //                     rel="noopener noreferrer"
+    //                     href="https://ktestone.com/kapable.github.io/personalColorJP/"
+    //                     className="to-personalColorOut-test-banner-text"
+    //                 >[ 日本語バージョンをやりに行く。 ]</a>
+    //                 <a
+    //                     target="_blank"
+    //                     rel="noopener noreferrer"
+    //                     href="https://ktestone.com/kapable.github.io/personalColorEng/"
+    //                     className="to-personalColorOut-test-banner-text"
+    //                 >[ Go to the English version ]</a>
+    //                 <a
+    //                     target="_blank"
+    //                     rel="noopener noreferrer"
+    //                     href="https://niair.xyz/kapable.github.io/personalColorCN/"
+    //                     className="to-personalColorOut-test-banner-text"
+    //                 >[ 汉语版本试 ]</a>
+    //             </Fragment>
+    //         )
+    //     }
+    // }
 
     introPageRender(){
 
@@ -303,8 +302,8 @@ class Intro extends Component {
             <div className="intro container">
                 <Helmet>
                     {/* <!-- Primary Meta Tags --> */}
-                    <title>{this.state.current_test.info.mainTitle}-케이테스트</title>
-                    <meta name="title" content={this.state.current_test.info.mainTitle+'-케이테스트'}/>
+                    <title>{this.state.current_test.info.mainTitle}-ALBA</title>
+                    <meta name="title" content={this.state.current_test.info.mainTitle+'-by LeeLee'}/>
                     <meta name="description" content={this.state.current_test.info.subTitle} data-react-helmet="true"/>
                     <link rel="main-url" href={this.state.quiz_url}/>
 
@@ -329,16 +328,16 @@ class Intro extends Component {
                     onClick={this._onStartButtonClick}
                     src={_thumbImage}
                     alt={_mainTitle + '|' + _subTitle}/>
-                {this.personalColorLinkRenderer()}
-                <Typist className="start-btn-participants">
-                    현재까지 총 {this.state.participants}명이 참여했어요.
-                </Typist>
+                {/*{this.personalColorLinkRenderer()}*/}
+                {/*<Typist className="start-btn-participants">*/}
+                {/*    현재까지 총 {this.state.participants}명이 참여했어요.*/}
+                {/*</Typist>*/}
 
                 {/* CPC Banner Intro footer */}
-                {this.cpcBannerIntroFooterScriptor()}
-
+                {/*{this.cpcBannerIntroFooterScriptor()}*/}
+                {/**/}
                 {/* BMAF Button */}
-                <BuyMeACoffee/>
+                {/*<BuyMeACoffee/>*/}
 
                 <div className="test-intro-with-friend">
                     <CopyToClipboard text={this.state.quiz_url+'/'}>
@@ -351,13 +350,13 @@ class Intro extends Component {
                         </Button>
                     </CopyToClipboard>
                 </div>
-                <div className="test-intro-to-main">
-                    <img
-                        className="test-intro-to-main-img"
-                        src={BACKBTN}
-                        onClick={this._onMainButtonClick}
-                        alt="다른 테스트 하러 뒤로가기"/>
-                </div>
+                {/*<div className="test-intro-to-main">*/}
+                {/*    <img*/}
+                {/*        className="test-intro-to-main-img"*/}
+                {/*        src={BACKBTN}*/}
+                {/*        onClick={this._onMainButtonClick}*/}
+                {/*        alt="다른 테스트 하러 뒤로가기"/>*/}
+                {/*</div>*/}
             </div>
         );
     }
@@ -372,6 +371,7 @@ class Intro extends Component {
             }
         } else if (this.state.scoreType === "typeCounting") {
             let final_result = this.state.answer_type_obj;
+
             let keys = Object.keys(final_result);
             let max = final_result[keys[0]];
             let max_keys = [];
@@ -381,6 +381,7 @@ class Intro extends Component {
             }
             for (let key of keys) {
                 if(final_result[key] === max) {
+
                     max_keys.push(key)
                 }
             }
@@ -534,7 +535,7 @@ class Intro extends Component {
                 <Loading />
                 {setTimeout(function(){
                     this.setState({mode:"result"})
-                }.bind(this), 4700)}
+                }.bind(this), 1000)}
             </div>
         )
     }
@@ -543,9 +544,8 @@ class Intro extends Component {
         // go to result page
         let result_contents = this.resultCaculator();
         let final_score_query = result_contents.query // <----------------query export
-
         return(
-            <Router basename={'/kapable.github.io/'+ this.state.current_test.info.mainUrl}>
+            <Router basename={ this.state.current_test.info.mainUrl}>
                 <Route path={this.state.result_url+final_score_query} component={Result}/>
                 <Redirect to={this.state.result_url+final_score_query} />
             </Router>

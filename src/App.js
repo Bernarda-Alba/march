@@ -180,26 +180,26 @@ class App extends Component {
             <Route path='/' exact>
                 <Helmet>
                   {/* <!-- Primary Meta Tags --> */}
-                  <title>취향 분석 테스트 - 케이테스트</title>
-                  <meta name="title" content="케이테스트 - 퍼스널 컬러 테스트"/>
-                  <meta name="description" content="진짜 내 모습을 찾아가는 심리 분석 테스트 : 퍼스널 컬러 테스트,퍼스널컬러테스트 , 퍼스널컬러 궁합 테스트, 강아지로보는나테스트 , 심리테스트, 케이테스트, 색깔테스트, 퍼스널컬러" data-react-helmet="true"/>
+                  <title>베르나르다 알바 성격 테스트</title>
+                  <meta name="title" content="베르나르다 알바 성격 테스트 by LeeLee"/>
+                  <meta name="description" content="내가 베르나르다 알바 속 캐릭터라면?" data-react-helmet="true"/>
                   <link rel="main-url" href={window.location.href}/>
 
                   {/* <!-- Open Graph / Facebook --> */}
-                  <meta property="og:type" content="website"/>
-                  <meta property="og:url" content="https://ktestone.com/"/>
-                  <meta property="og:title" content="케이테스트 - 퍼스널 컬러 테스트"/>
-                  <meta property="og:description" content="진짜 내 모습을 찾아가는 심리 분석 테스트 : 퍼스널 컬러 테스트,퍼스널컬러테스트 , 퍼스널컬러 궁합 테스트, 강아지로보는나테스트 , 심리테스트, 케이테스트, 색깔테스트, 퍼스널컬러"/>
-                  <meta property="og:image" content="https://images.ktestone.com/default/meta-main-header.png"/>
-                  <meta property="og:image:alt" content="진짜 내 모습을 찾아가는 심리 분석 테스트 : 퍼스널 컬러 테스트" />
+                  {/*<meta property="og:type" content="website"/>*/}
+                  {/*<meta property="og:url" content="https://ktestone.com/"/>*/}
+                  {/*<meta property="og:title" content="케이테스트 - 퍼스널 컬러 테스트"/>*/}
+                  {/*<meta property="og:description" content="진짜 내 모습을 찾아가는 심리 분석 테스트 : 퍼스널 컬러 테스트,퍼스널컬러테스트 , 퍼스널컬러 궁합 테스트, 강아지로보는나테스트 , 심리테스트, 케이테스트, 색깔테스트, 퍼스널컬러"/>*/}
+                  {/*<meta property="og:image" content="https://images.ktestone.com/default/meta-main-header.png"/>*/}
+                  {/*<meta property="og:image:alt" content="진짜 내 모습을 찾아가는 심리 분석 테스트 : 퍼스널 컬러 테스트" />*/}
 
                   {/* <!-- Twitter --> */}
                   <meta property="twitter:card" content="summary_large_image"/>
                   <meta property="twitter:url" content="https://ktestone.com/"/>
-                  <meta property="twitter:title" content="케이테스트 - 퍼스널 컬러 테스트"/>
-                  <meta property="twitter:description" content="진짜 내 모습을 찾아가는 심리 분석 테스트 : 퍼스널 컬러 테스트,퍼스널컬러테스트 , 퍼스널컬러 궁합 테스트, 강아지로보는나테스트 , 심리테스트, 케이테스트, 색깔테스트, 퍼스널컬러"/>
-                  <meta property="twitter:image" content="https://images.ktestone.com/default/meta-main-header.png"/>
-                  <meta property="twitter:image:alt" content="진짜 내 모습을 찾아가는 심리 분석 테스트 : 퍼스널 컬러 테스트" />
+                  <meta property="twitter:title" content="베르나르다 알바 성격 테스트 by LeeLee"/>
+                  <meta property="twitter:description" content="내가 베르나르다 알바 속 캐릭터라면?"/>
+                  <meta property="twitter:image" content="https://user-images.githubusercontent.com/35620531/109660083-cb938980-7bab-11eb-8a64-0acadaad8233.png"/>
+                  <meta property="twitter:image:alt" content="내가 베르나르다 알바 속 캐릭터라면?" />
                 </Helmet>
                 <MainPage/>
             </Route>
@@ -236,11 +236,8 @@ class App extends Component {
 
       {/* footer */}
       <div className="intro-footer">
-          {/* <p>MAKER - 케이테스트</p> */}
-          <h5>광고 및 후원 문의<br></br>Advertising and Sponsorship Contact</h5>
-          <p>soumy21@naver.com</p>
-          <p>Disclaimer:<br></br>All content is provided for fun and entertainment purposes only</p>
-          <p>©주식회사 위드썸컴퍼니 All Rights Reserved. 2021.</p>
+          <h5>Powered Date<br></br>2021-03-05</h5>
+          <p>version: 0.0.1</p>
       </div>
     </Fragment>
     </Router>

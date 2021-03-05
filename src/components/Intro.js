@@ -106,7 +106,7 @@ class Intro extends Component {
             num_shares_count:this.state.num_shares_count+1
         })
         // this._eventSenderGA("Sharing", "Click Copy-link Button", "intro page");
-        alert("COPIED!");
+        alert("복사 완료! 링크를 공유해주세요.");
     }
     // cpcBannerIntroFooterScriptor(){
     //     if( this.state.quiz_url.includes("ktestone.com")) {
@@ -342,11 +342,11 @@ class Intro extends Component {
                 <div className="test-intro-with-friend">
                     <CopyToClipboard text={this.state.quiz_url+'/'}>
                         <Button className="test-intro-with-friend-btn">
-                            <img
-                                src={COPYBTN}
+                            <h3
                                 className="test-intro-with-friend-img"
-                                onClick={this._onShareButtonClick}
-                                alt="테스트 링크 복사"/>
+                                onClick={this._onShareButtonClick}>
+                                🔗 링크공유
+                            </h3>
                         </Button>
                     </CopyToClipboard>
                 </div>

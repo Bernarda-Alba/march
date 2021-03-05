@@ -262,28 +262,49 @@ var TESTS = [
         results:[
             {
                 type: "아델라",
-                desc: `어리고 제일 예뻤어~ 아델라! \n`,
+                desc: `어리고 제일 예뻤어~ 아델라! \n\nLorem Ipsum is simply dummy text of the printing and typesetting industry.\n
+                 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,\n
+                  when an unknown printer took a galley of type and scrambled it to make a type specimen book.\n
+                  It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.\n
+                  It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,\n
+                  and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                `,
                 query: "fifth",
                 score_range:range(26),
                 img_src:'https://user-images.githubusercontent.com/35620531/109660294-05fd2680-7bac-11eb-9c8a-98faa4ba7f19.png'
             },
             {
                 type: "마르띠리오",
-                desc: `남자들이 다 싫어해~ 마르띠리오!\n`,
+                desc: `남자들이 다 싫어해~ 마르띠리오!\n\nLorem Ipsum is simply dummy text of the printing and typesetting industry.\n
+                 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,\n
+                  when an unknown printer took a galley of type and scrambled it to make a type specimen book.\n
+                  It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.\n
+                  It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,\n
+                  and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
                 query: "fourth",
                 score_range:range(26, 51),
                 img_src:'https://user-images.githubusercontent.com/35620531/109660461-3d6bd300-7bac-11eb-8377-d56d2ed46070.png'
             },
             {
                 type: "아멜리아",
-                desc: `부끄럼만 많아~ 아멜리아!\n`,
+                desc: `부끄럼만 많아~ 아멜리아!\n\nLorem Ipsum is simply dummy text of the printing and typesetting industry.\n
+                 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,\n
+                  when an unknown printer took a galley of type and scrambled it to make a type specimen book.\n
+                  It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.\n
+                  It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,\n
+                  and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
                 query: "third",
                 score_range:range(51, 75),
                 img_src:'https://user-images.githubusercontent.com/35620531/109660136-db12d280-7bab-11eb-9a59-4fa6ec046758.png'
             },
             {
                 type: "앙구스티아스",
-                desc: `첫째딸 이름은~ 앙구스티아스!\n`,
+                desc: `첫째딸 이름은~ 앙구스티아스!\n\nLorem Ipsum is simply dummy text of the printing and typesetting industry.\n
+                 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,\n
+                  when an unknown printer took a galley of type and scrambled it to make a type specimen book.\n
+                  It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.\n
+                  It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,\n
+                  and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
                 query: "first",
                 score_range:range(76, 101),
                 img_src:'https://user-images.githubusercontent.com/35620531/109660521-4fe60c80-7bac-11eb-89c2-90d9cafcc083.png'
@@ -291,7 +312,12 @@ var TESTS = [
             },
             {
                 type: "막달레나",
-                desc: `온종일 낮잠만 자~ 막달레나!\n`,
+                desc: `온종일 낮잠만 자~ 막달레나!\n\nLorem Ipsum is simply dummy text of the printing and typesetting industry.\n
+                 Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,\n
+                  when an unknown printer took a galley of type and scrambled it to make a type specimen book.\n
+                  It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.\n
+                  It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,\n
+                  and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
                 query: "second",
                 score_range:range(76, 101),
                 img_src:'https://user-images.githubusercontent.com/35620531/109660599-655b3680-7bac-11eb-87be-6c88d002de9f.png'

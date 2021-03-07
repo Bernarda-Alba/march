@@ -10,16 +10,14 @@ import {Helmet} from 'react-helmet';
 class Result extends Component {
     constructor(props){
         super(props)
-
-        console.log("result constructor called")
         let _sharable_url = window.location.href
-        console.log(_sharable_url)
 
         if(window.location.href.slice(-1) === '/'){
             _sharable_url = window.location.href.slice(0, -1)
         } else {
             _sharable_url = window.location.href
         }
+
 
         const _current_url = _sharable_url.split('/').filter(function(t) {return t !== ""})
         const _current_test = _current_url.reverse()[2]
@@ -51,6 +49,7 @@ class Result extends Component {
     }
 
 
+
     introPageRender(){
 
         const current_tests_path = '/' + this.state.current_test + '/';
@@ -66,11 +65,13 @@ class Result extends Component {
 
     resultRender(){
 
+
         let final_type = ''
         let final_desc = ''
         let img_src = ''
         let test_current = ''
         let desc_test_current = ''
+        let final_real_meta = ''
         let i = 0;
         let _current_test_contents ;
         while(i<TESTS.length){
@@ -84,6 +85,7 @@ class Result extends Component {
                         img_src = TESTS[i].results[j].img_src
                         test_current = TESTS[i].info.mainTitle
                         desc_test_current = TESTS[i].info.subTitle
+                        final_real_meta = TESTS[i].info.real_meta
                         break
                     }
                     j = j + 1;
@@ -91,33 +93,13 @@ class Result extends Component {
             }
             i = i + 1;
         }
-        
 
 
         if(_current_test_contents.info.scoreType === "storyTelling" || _current_test_contents.info.scoreType === "typeCountingMBTI" || _current_test_contents.info.scoreType === "dualMBTI" || _current_test_contents.info.scoreType === "typeCounting"){
             return (
                 <Fragment>
-                    <Helmet>
-                        <title>{test_current}-ALBA</title>
-                        <meta name="title" content={test_current+'-by LeeLee'}/>
-                        <meta name="description" content={this.state.current_result + ':' + desc_test_current} data-react-helmet="true"/>
-                        <link rel="main-url" href={this.state.sharable_url}/>
 
-                        <meta property="og:type" content="website"/>
-                        <meta property="og:url" content={this.state.sharable_url}/>
-                        <meta property="og:title" content={test_current+'-by LeeLee'}/>
-                        <meta property="og:description" content={this.state.current_result + ':' + desc_test_current}/>
-                        <meta property="og:image" content={img_src}/>
-                        <meta property="og:image:alt" content={this.state.current_result} />
-
-                        <meta property="twitter:card" content="summary_large_image"/>
-                        <meta property="twitter:url" content={this.state.sharable_url}/>
-                        <meta property="twitter:title" content={test_current+'-by LeeLee'}/>
-                        <meta property="twitter:description" content={this.state.current_result + ':' + desc_test_current}/>
-                        <meta property="twitter:image" content={img_src}/>
-                        <meta property="twitter:image:alt" content={this.state.current_result} />
-                    </Helmet>
-                    <img src={img_src} className='result-img' alt={final_type} />
+                    <img src={img_src} className='result-img' alt={final_type} data-meta={final_real_meta}/>
                     <Card className="result-card" bg="light">
                         <Card.Body className="result-p">
                             <Card.Text>{final_desc}</Card.Text>
@@ -181,7 +163,7 @@ class Result extends Component {
 
                     <div className="share">
                         <div className="share">
-                            <CopyToClipboard text={this.state.sharable_url+'/'}>
+                            <CopyToClipboard text={this.props.meta}>
                                 <Button className="share-btn">
                                 <h3
                                     onClick={this._onShareButtonClick}

@@ -25,7 +25,7 @@ var TESTS = [
     // daengdaeng
     {
         info : {
-            mainTitle:"베르나르다 알바 성격 테스트",
+            mainTitle:"베르나르다 알바 캐릭터 성격 분석",
             subTitle:"내가 베르나르다 알바 속 캐릭터라면?",
             mainUrl:"alba",
             scoreType:"typeCounting",
@@ -209,7 +209,7 @@ var TESTS = [
                 ]
             },
             {
-                question: "화가 나서 화를 내려고 할 때 수정수정",
+                question: "화가 나서 화를 내려고 할 때",
                 answers:[
                     {
                         type: "막달레나",
@@ -271,7 +271,8 @@ var TESTS = [
                 `,
                 query: "fifth",
                 score_range:range(26),
-                img_src:'https://user-images.githubusercontent.com/35620531/109660294-05fd2680-7bac-11eb-9c8a-98faa4ba7f19.png'
+                img_src:'https://user-images.githubusercontent.com/35620531/109660294-05fd2680-7bac-11eb-9c8a-98faa4ba7f19.png',
+                real_meta: 'https://leeleelee3264.github.io/sample_html/adela.html'
             },
             {
                 type: "마르띠리오",
@@ -283,7 +284,8 @@ var TESTS = [
                   and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
                 query: "fourth",
                 score_range:range(26, 51),
-                img_src:'https://user-images.githubusercontent.com/35620531/109660461-3d6bd300-7bac-11eb-8377-d56d2ed46070.png'
+                img_src:'https://user-images.githubusercontent.com/35620531/109660461-3d6bd300-7bac-11eb-8377-d56d2ed46070.png',
+                real_meta: 'https://leeleelee3264.github.io/sample_html/martirio.html'
             },
             {
                 type: "아멜리아",
@@ -295,7 +297,9 @@ var TESTS = [
                   and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
                 query: "third",
                 score_range:range(51, 75),
-                img_src:'https://user-images.githubusercontent.com/35620531/109660136-db12d280-7bab-11eb-9a59-4fa6ec046758.png'
+                img_src:'https://user-images.githubusercontent.com/35620531/109660136-db12d280-7bab-11eb-9a59-4fa6ec046758.png',
+                real_meta: 'https://leeleelee3264.github.io/sample_html/amila.html'
+
             },
             {
                 type: "앙구스티아스",
@@ -307,7 +311,8 @@ var TESTS = [
                   and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
                 query: "first",
                 score_range:range(76, 101),
-                img_src:'https://user-images.githubusercontent.com/35620531/109660521-4fe60c80-7bac-11eb-89c2-90d9cafcc083.png'
+                img_src:'https://user-images.githubusercontent.com/35620531/109660521-4fe60c80-7bac-11eb-89c2-90d9cafcc083.png',
+                real_meta: 'https://leeleelee3264.github.io/sample_html/angu.html'
 
             },
             {
@@ -320,7 +325,9 @@ var TESTS = [
                   and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.`,
                 query: "second",
                 score_range:range(76, 101),
-                img_src:'https://user-images.githubusercontent.com/35620531/109660599-655b3680-7bac-11eb-87be-6c88d002de9f.png'
+                img_src:'https://user-images.githubusercontent.com/35620531/109660599-655b3680-7bac-11eb-87be-6c88d002de9f.png',
+                real_meta: 'https://leeleelee3264.github.io/sample_html/magda.html'
+
             },
         ]
     },

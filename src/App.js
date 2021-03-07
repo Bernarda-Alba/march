@@ -76,18 +76,11 @@ class App extends Component {
           <Switch>
             <Route path='/' exact>
                 <Helmet>
-                  <title>베르나르다 알바 성격 테스트</title>
-                  <meta name="title" content="베르나르다 알바 성격 테스트 by LeeLee"/>
+                  <title>베르나르다 알바 캐릭터 성격 분석</title>
+                  <meta name="title" content="베르나르다 알바 캐릭터 성격 분석 by LeeLee"/>
                   <meta name="description" content="내가 베르나르다 알바 속 캐릭터라면?" data-react-helmet="true"/>
                   <link rel="main-url" href={window.location.href}/>
 k
-                  <meta property="og:type" content="website"/>
-                  <meta property="og:url" content="https://ktestone.com/"/>
-                  <meta property="og:title" content="케이테스트 - 퍼스널 컬러 테스트"/>
-                  <meta property="og:description" content="진짜 내 모습을 찾아가는 심리 분석 테스트 : 퍼스널 컬러 테스트,퍼스널컬러테스트 , 퍼스널컬러 궁합 테스트, 강아지로보는나테스트 , 심리테스트, 케이테스트, 색깔테스트, 퍼스널컬러"/>
-                  <meta property="og:image" content="https://images.ktestone.com/default/meta-main-header.png"/>
-                  <meta property="og:image:alt" content="진짜 내 모습을 찾아가는 심리 분석 테스트 : 퍼스널 컬러 테스트" />
-
                   <meta property="twitter:card" content="summary_large_image"/>
                   <meta property="twitter:url" content="https://ktestone.com/"/>
                   <meta property="twitter:title" content="베르나르다 알바 성격 테스트 by LeeLee"/>
@@ -124,7 +117,8 @@ k
 
       <div className="intro-footer">
           <h5>Powered Date<br></br>2021-03-05</h5>
-          <p>version: 0.0.1</p>
+          <h5>Recent Modify<br></br>KST 2021-03-14 22:30</h5>
+          <p>version: 1.0.3</p>
       </div>
     </Fragment>
     </Router>

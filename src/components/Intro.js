@@ -97,26 +97,7 @@ class Intro extends Component {
 
         return (
             <div className="intro container">
-                <Helmet>
-                    <title>{this.state.current_test.info.mainTitle}-ALBA</title>
-                    <meta name="title" content={this.state.current_test.info.mainTitle+'-by LeeLee'}/>
-                    <meta name="description" content={this.state.current_test.info.subTitle} data-react-helmet="true"/>
-                    <link rel="main-url" href={this.state.quiz_url}/>
 
-                    <meta property="og:type" content="website"/>
-                    <meta property="og:url" content={this.state.quiz_url}/>
-                    <meta property="og:title" content={this.state.current_test.info.mainTitle}/>
-                    <meta property="og:description" content={this.state.current_test.info.subTitle}/>
-                    <meta property="og:image" content={this.state.current_test.info.mainImage}/>
-                    <meta property="og:image:alt" content={this.state.current_test.info.mainTitle} />
-
-                    <meta property="twitter:card" content="summary_large_image"/>
-                    <meta property="twitter:url" content={this.state.quiz_url}/>
-                    <meta property="twitter:title" content={this.state.current_test.info.mainTitle}/>
-                    <meta property="twitter:description" content={this.state.current_test.info.subTitle}/>
-                    <meta property="twitter:image" content={this.state.current_test.info.mainImage}/>
-                    <meta property="twitter:image:alt" content={this.state.current_test.info.mainTitle} />
-                </Helmet>
                 <img
                     className="intro-main-img"
                     onClick={this._onStartButtonClick}
@@ -141,7 +122,6 @@ class Intro extends Component {
     }
 
     resultCaculator(){
-        console.log("resultCalculator called")
         if (this.state.scoreType === "numberScoring" || this.state.scoreType === "birthdayCalc" || this.state.scoreType === "storyTelling" || this.state.scoreType === "numberScoringImg" ){
             let final_score = this.state.counted_score;
             for (let k = 0; k < this.state.current_test.results.length; k++){
@@ -167,7 +147,6 @@ class Intro extends Component {
             }
             for (let z=0;z<this.state.current_test.results.length;z++){
                 if(max_keys[0] === this.state.current_test.results[z].type){
-                    console.log(this.state.current_test.results[z])
                     return this.state.current_test.results[z]
                 }
             }
@@ -239,7 +218,6 @@ class Intro extends Component {
                 scoreType={this.state.scoreType}
                 onChangeMode={
                     function(_quizNum, _answer, _mode) {
-                        console.log("onechange" + _quizNum + " " + _mode)
                     var _answer_obj = Object.assign({}, this.state.answer_type_obj);
                     _answer_obj[_answer] = _answer_obj[_answer] + 1;
                     this.setState({
@@ -311,19 +289,18 @@ class Intro extends Component {
                 <Loading />
                 {setTimeout(function(){
                     this.setState({mode:"result"})
-                }.bind(this), 4700)}
+                }.bind(this), 4000)}
             </div>
         )
     }
 
     resultPageRender(){
-        console.log("resultPageRender called")
         let result_contents = this.resultCaculator();
         let final_score_query = result_contents.query
         console.log(final_score_query)
         return(
-            <Router basename={ this.state.current_test.info.mainUrl}>
-                <Route path={this.state.result_url+final_score_query} component={Result}/>
+            <Router basename={ 'march/' + this.state.current_test.info.mainUrl}>
+                <Route path={this.state.result_url+final_score_query} render={() => <Result meta={result_contents.real_meta}/>}/>
                 <Redirect to={this.state.result_url+final_score_query} />
             </Router>
         )
@@ -340,7 +317,6 @@ class Intro extends Component {
         } else if (this.state.mode === "loading") {
             _page = this.lodingPageRender()
         } else if (this.state.mode === "result") {
-            console.log("pageRenderer result call")
             _page = this.resultPageRender()
         }
 

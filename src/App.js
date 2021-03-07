@@ -173,7 +173,7 @@ class App extends Component {
       {/* CPC Banner Upper */}
       {/*this.cpcBannerUpperScriptor()*/}
 
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <ScrollToTop>
           <Switch>
             {/* "Main" page */}
@@ -184,7 +184,7 @@ class App extends Component {
                   <meta name="title" content="베르나르다 알바 성격 테스트 by LeeLee"/>
                   <meta name="description" content="내가 베르나르다 알바 속 캐릭터라면?" data-react-helmet="true"/>
                   <link rel="main-url" href={window.location.href}/>
-
+k
                   {/* <!-- Open Graph / Facebook --> */}
                   {/*<meta property="og:type" content="website"/>*/}
                   {/*<meta property="og:url" content="https://ktestone.com/"/>*/}

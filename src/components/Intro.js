@@ -541,6 +541,7 @@ class Intro extends Component {
     }
 
     resultPageRender(){
+        console.log("여기까지 로드가 된다")
         // go to result page
         let result_contents = this.resultCaculator();
         let final_score_query = result_contents.query // <----------------query export

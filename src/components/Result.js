@@ -378,7 +378,7 @@ class Result extends Component {
 
     mainPageRender(){
         return(
-            <Router >
+            <Router basename={process.env.PUBLIC_URL}>
                 <Switch>
                     <Route path='/' component={App} exact/>
                     <Redirect to='/' />

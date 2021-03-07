@@ -209,7 +209,7 @@ var TESTS = [
                 ]
             },
             {
-                question: "화가 나서 화를 내려고 할 때",
+                question: "화가 나서 화를 내려고 할 때 수정수정",
                 answers:[
                     {
                         type: "막달레나",

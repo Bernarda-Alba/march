@@ -11,7 +11,10 @@ class Result extends Component {
     constructor(props){
         super(props)
 
+        console.log("result constructor called")
         let _sharable_url = window.location.href
+        console.log(_sharable_url)
+
         if(window.location.href.slice(-1) === '/'){
             _sharable_url = window.location.href.slice(0, -1)
         } else {
@@ -52,7 +55,7 @@ class Result extends Component {
 
         const current_tests_path = '/' + this.state.current_test + '/';
         return(
-            <Router basename='/'>
+            <Router basename={process.env.PUBLIC_URL}>
                 <Switch>
                     <Route path={current_tests_path} component={()=><Intro test={this.state.current_test}/>} exact/>
                     <Redirect to={current_tests_path} />

@@ -16,12 +16,14 @@ const defaultOptions = {
 
 class Loading extends Component {
   componentDidMount(){
+      console.log("loding didMount called")
 
     if(window.location.href.includes("niair.xyz")){
         if(window) (window.adsbygoogle = window.adsbygoogle || []).push({});
     }
   }
     render(){
+      console.log("loding render called")
         if(window.location.href.includes("ktestone.com")) {
             return(
               <Fragment>
@@ -48,10 +50,10 @@ class Loading extends Component {
                 </div>
               </Fragment>
             )
-          } else if(window.location.href.includes("localhost") || window.location.href.includes("niair.xyz")) {
+          } else if(window.location.href.includes("localhost") || window.location.href.includes("niair.xyz") || window.location.href.includes(process.env.PUBLIC_URL)) {
+            console.log("final called!!!!")
             return(
               <Fragment>
-                {/* 로딩 중앙 */}
                 <ins className="adsbygoogle"
                     style={{display:"block"}}
                     data-ad-client="ca-pub-2382342018701919"

@@ -141,6 +141,7 @@ class Intro extends Component {
     }
 
     resultCaculator(){
+        console.log("resultCalculator called")
         if (this.state.scoreType === "numberScoring" || this.state.scoreType === "birthdayCalc" || this.state.scoreType === "storyTelling" || this.state.scoreType === "numberScoringImg" ){
             let final_score = this.state.counted_score;
             for (let k = 0; k < this.state.current_test.results.length; k++){
@@ -166,6 +167,7 @@ class Intro extends Component {
             }
             for (let z=0;z<this.state.current_test.results.length;z++){
                 if(max_keys[0] === this.state.current_test.results[z].type){
+                    console.log(this.state.current_test.results[z])
                     return this.state.current_test.results[z]
                 }
             }
@@ -237,6 +239,7 @@ class Intro extends Component {
                 scoreType={this.state.scoreType}
                 onChangeMode={
                     function(_quizNum, _answer, _mode) {
+                        console.log("onechange" + _quizNum + " " + _mode)
                     var _answer_obj = Object.assign({}, this.state.answer_type_obj);
                     _answer_obj[_answer] = _answer_obj[_answer] + 1;
                     this.setState({
@@ -302,6 +305,7 @@ class Intro extends Component {
     }
 
     lodingPageRender(){
+        console.log("lodingPageRender call")
         return(
             <div className="loading-upper">
                 <Loading />
@@ -313,8 +317,10 @@ class Intro extends Component {
     }
 
     resultPageRender(){
+        console.log("resultPageRender called")
         let result_contents = this.resultCaculator();
         let final_score_query = result_contents.query
+        console.log(final_score_query)
         return(
             <Router basename={ this.state.current_test.info.mainUrl}>
                 <Route path={this.state.result_url+final_score_query} component={Result}/>
@@ -334,8 +340,10 @@ class Intro extends Component {
         } else if (this.state.mode === "loading") {
             _page = this.lodingPageRender()
         } else if (this.state.mode === "result") {
+            console.log("pageRenderer result call")
             _page = this.resultPageRender()
         }
+
         return _page
     }
 

@@ -16,7 +16,7 @@ const defaultOptions = {
 
 class Loading extends Component {
   componentDidMount(){
-    // if condition for Adsense domain
+
     if(window.location.href.includes("niair.xyz")){
         if(window) (window.adsbygoogle = window.adsbygoogle || []).push({});
     }
@@ -69,4 +69,3 @@ class Loading extends Component {
 
 export default Loading;
 
-// https://github.com/chenqingspring/react-lottie

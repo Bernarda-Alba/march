@@ -50,12 +50,7 @@
     },
     "cacheAjaxRequests": false,
     "include": [
-      "/alba",
-      "/alba/result/one",
-      "/alba/result/second",
-      "/alba/result/third",
-      "/alba/result/fourth",
-      "/alba/rsult/fifth"
+      "/"
     ]
   },
   "eslintConfig": {

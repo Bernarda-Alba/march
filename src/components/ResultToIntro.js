@@ -19,7 +19,7 @@ class ResultToIntro extends Component {
     }
     introPageRender(){
         return(
-            <Router basename='/kapable.github.io/'>
+            <Router basename={process.env.PUBLIC_URL}>
                 <Switch>
                     <Route path={this.state.test_main_url} component={Intro} exact/>
                     <Redirect to={this.state.test_main_url} />
@@ -31,9 +31,9 @@ class ResultToIntro extends Component {
         return(
             <div className='guide-div'>
                 <div className="guide-desc">
-                    아래 버튼을 눌러 연애 심리 테스트를 해보세요!
+                    ...
                 </div>
-                <div className="guide-re-test-btn">
+                <div className="guide-re-test-btn">`
                     <Button onClick={this._onBackToStartButtonClick} className="retest-btn" variant="dark">테스트 다시하기</Button>
                 </div>
             </div>

@@ -1,21 +1,15 @@
-import React, { Component, Fragment } from 'react';
+import React, {Component, Fragment} from 'react';
 import Quiz from './Quiz'
 import Result from './Result'
 import Loading from './Loading'
 import BirthdayCalc from './BirthdayCalc'
 import DualMbti from './DualMbti'
 import StoryTelling from './StoryTelling'
-import BuyMeACoffee from './BuyMeACoffee'
 import TESTS from '../api/TESTS'
-import { BrowserRouter as Router, Redirect, Route, withRouter } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
-import Typist from 'react-typist';
-import { CopyToClipboard } from 'react-copy-to-clipboard'
-import { Helmet } from 'react-helmet';
-import COPYBTN from '../api/DefaultImg/test-intro-copy-link-btn.png';
-import BACKBTN from '../api/DefaultImg/test-intro-other-tests-btn.png';
-import ScriptTag from 'react-script-tag'
-import ReactGA from 'react-ga';
+import {BrowserRouter as Router, Redirect, Route, withRouter} from 'react-router-dom';
+import {Button} from 'react-bootstrap';
+import {CopyToClipboard} from 'react-copy-to-clipboard'
+import {Helmet} from 'react-helmet';
 
 class Intro extends Component {
     constructor(props){
@@ -30,7 +24,6 @@ class Intro extends Component {
             i = i + 1
         }
 
-        // create answer option object for counting each question's answer
         let _answer_type_obj = {};
         for(let k=0; k<_current_test.questions.length; k++) {
             for(let l=0; l<_current_test.questions[k].answers.length; l++){
@@ -38,7 +31,6 @@ class Intro extends Component {
             }
         }
 
-        // for applying meta tag url with slash -> prevent doulbe slash at the last chars in the sharable url
         let _sharable_url = window.location.href
         if(window.location.href.slice(-1) === '/'){
             _sharable_url = window.location.href.slice(0, -1)
@@ -46,10 +38,8 @@ class Intro extends Component {
             _sharable_url = window.location.href
         }
 
-        // get Full Today
-        // padStart 쓰면 눈물나게 length 체크해서 0 써주고 그런거 안 해도 되겠네
         let today = new Date();
-        let month = String(today.getMonth() + 1)//.padStart(2, '0');
+        let month = String(today.getMonth() + 1)
         let date = String(today.getDate()).padStart(2, '0');
         let hour = String(today.getHours()).padStart(2, '0');
         let minute = String(today.getMinutes()).padStart(2, '0');
@@ -59,9 +49,9 @@ class Intro extends Component {
             current_test:_current_test,
             qAndA:_current_test.questions,
             scoreType:_current_test.info.scoreType,
-            answer_type_obj:_answer_type_obj, // < ------------- for calculating type += 1
+            answer_type_obj:_answer_type_obj,
             quizNumber:0,
-            counted_score:0, // < ------------- for calculating scores
+            counted_score:0,
             result_url:'/result/',
             quiz_url:_sharable_url,
             participants:(Number(month+date+hour+minute)*10).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
@@ -70,25 +60,16 @@ class Intro extends Component {
         this._onStartButtonClick = this._onStartButtonClick.bind(this);
         this._onMainButtonClick = this._onMainButtonClick.bind(this);
         this._onShareButtonClick = this._onShareButtonClick.bind(this);
-        // this._eventSenderGA = this._eventSenderGA.bind(this);
     }
 
     componentDidMount(){
-        // if condition for Adsense domain
         if(this.state.quiz_url.includes("niair.xyz")){
             if(window) (window.adsbygoogle = window.adsbygoogle || []).push({});
         }
     }
 
-    // _eventSenderGA(category, action, label){
-    //     ReactGA.event({
-    //         category: category,
-    //         action: action,
-    //         label: label
-    //       });
-    // }
+
     _onStartButtonClick(){
-        // this._eventSenderGA("Paging", "Click Start-test Button", "intro page");
         this.setState({
             mode:'quiz'
         })
@@ -98,199 +79,15 @@ class Intro extends Component {
         this.setState({
             mode:'main'
         })
-        // this._eventSenderGA("Paging", "Click Back-to-main Button", "intro page");
     }
 
     _onShareButtonClick(){
         this.setState({
             num_shares_count:this.state.num_shares_count+1
         })
-        // this._eventSenderGA("Sharing", "Click Copy-link Button", "intro page");
         alert("복사 완료! 링크를 공유해주세요.");
     }
-    // cpcBannerIntroFooterScriptor(){
-    //     if( this.state.quiz_url.includes("ktestone.com")) {
-    //       return(
-    //         <Fragment>
-    //           <ins className="kakao_ad_area" style={{display:"none"}}
-    //             data-ad-unit    = "DAN-zutyUS1LJQDp2SK0"
-    //             data-ad-width   = "320"
-    //             data-ad-height  = "100"></ins>
-    //             <ScriptTag type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></ScriptTag>
-    //         </Fragment>
-    //       )
-    //     } else if(this.state.quiz_url.includes("https://kapable.github.io/")) {
-    //       return(
-    //         <Fragment>
-    //           <ins className="kakao_ad_area" style={{display:"none"}}
-    //             data-ad-unit    = "DAN-zIzDEpvl7LL78fMU"
-    //             data-ad-width   = "320"
-    //             data-ad-height  = "100"></ins>
-    //             <ScriptTag type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></ScriptTag>
-    //         </Fragment>
-    //       )
-    //     } else if(this.state.quiz_url.includes("localhost") || this.state.quiz_url.includes("niair.xyz")) {
-    //         return(
-    //           <Fragment>
-    //             {/* 인트로 공유 위 수평 */}
-    //             <ins className="adsbygoogle"
-    //                 style={{display:"block"}}
-    //                 data-ad-client="ca-pub-2382342018701919"
-    //                 data-ad-slot="3153221262"
-    //                 data-ad-format="auto"
-    //                 data-full-width-responsive="true"></ins>
-    //           </Fragment>
-    //         )
-    //       }
-    //   }
-    // personalColorLinkRenderer(){
-    //     if(this.state.current_test.info.mainUrl === "personalColor") {
-    //         return(
-    //             <Fragment>
-    //                 <a
-    //                     target="_blank"
-    //                     rel="noopener noreferrer"
-    //                     href="https://ktestone.com/kapable.github.io/personalColorEng/"
-    //                     className="to-personalColorOut-test-banner-text"
-    //                 >[ Go to English version ]</a>
-    //                 <a
-    //                     target="_blank"
-    //                     rel="noopener noreferrer"
-    //                     href="https://ktestone.com/kapable.github.io/personalColorJP/"
-    //                     className="to-personalColorOut-test-banner-text"
-    //                 >[ 日本語バージョンをやりに行く。 ]</a>
-    //                 <a
-    //                     target="_blank"
-    //                     rel="noopener noreferrer"
-    //                     href="https://ktestone.com/kapable.github.io/personalColorCN/"
-    //                     className="to-personalColorOut-test-banner-text"
-    //                 >[ 汉语版本试 ]</a>
-    //                 <a
-    //                     target="_blank"
-    //                     rel="noopener noreferrer"
-    //                     href="https://ktestone.com/kapable.github.io/personalColorES/"
-    //                     className="to-personalColorOut-test-banner-text"
-    //                 >[ paso a la versión española ]</a>
-    //             </Fragment>
-    //         )
-    //     } else if(this.state.current_test.info.mainUrl === "personalColorJP") {
-    //         return(
-    //             <Fragment>
-    //                 <a
-    //                     target="_blank"
-    //                     rel="noopener noreferrer"
-    //                     href="https://ktestone.com/kapable.github.io/personalColor/"
-    //                     className="to-personalColorOut-test-banner-text"
-    //                 >[ 한국어 버전으로 하러가기 ]</a>
-    //                 <a
-    //                     target="_blank"
-    //                     rel="noopener noreferrer"
-    //                     href="https://ktestone.com/kapable.github.io/personalColorEng/"
-    //                     className="to-personalColorOut-test-banner-text"
-    //                 >[ Go to English version ]</a>
-    //                 <a
-    //                     target="_blank"
-    //                     rel="noopener noreferrer"
-    //                     href="https://ktestone.com/kapable.github.io/personalColorCN/"
-    //                     className="to-personalColorOut-test-banner-text"
-    //                 >[ 汉语版本试 ]</a>
-    //                 <a
-    //                     target="_blank"
-    //                     rel="noopener noreferrer"
-    //                     href="https://ktestone.com/kapable.github.io/personalColorES/"
-    //                     className="to-personalColorOut-test-banner-text"
-    //                 >[ paso a la versión española ]</a>
-    //             </Fragment>
-    //         )
-    //     } else if(this.state.current_test.info.mainUrl === "personalColorEng") {
-    //         return(
-    //             <Fragment>
-    //                 <a
-    //                     target="_blank"
-    //                     rel="noopener noreferrer"
-    //                     href="https://ktestone.com/kapable.github.io/personalColor/"
-    //                     className="to-personalColorOut-test-banner-text"
-    //                 >[ 한국어 버전으로 하러가기 ]</a>
-    //                 <a
-    //                     target="_blank"
-    //                     rel="noopener noreferrer"
-    //                     href="https://ktestone.com/kapable.github.io/personalColorJP/"
-    //                     className="to-personalColorOut-test-banner-text"
-    //                 >[ 日本語バージョンをやりに行く。 ]</a>
-    //                 <a
-    //                     target="_blank"
-    //                     rel="noopener noreferrer"
-    //                     href="https://ktestone.com/kapable.github.io/personalColorCN/"
-    //                     className="to-personalColorOut-test-banner-text"
-    //                 >[ 汉语版本试 ]</a>
-    //                 <a
-    //                     target="_blank"
-    //                     rel="noopener noreferrer"
-    //                     href="https://ktestone.com/kapable.github.io/personalColorES/"
-    //                     className="to-personalColorOut-test-banner-text"
-    //                 >[ paso a la versión española ]</a>
-    //             </Fragment>
-    //         )
-    //     } else if(this.state.current_test.info.mainUrl === "personalColorCN") {
-    //         return(
-    //             <Fragment>
-    //                 <a
-    //                     target="_blank"
-    //                     rel="noopener noreferrer"
-    //                     href="https://ktestone.com/kapable.github.io/personalColor/"
-    //                     className="to-personalColorOut-test-banner-text"
-    //                 >[ 한국어 버전으로 하러가기 ]</a>
-    //                 <a
-    //                     target="_blank"
-    //                     rel="noopener noreferrer"
-    //                     href="https://ktestone.com/kapable.github.io/personalColorJP/"
-    //                     className="to-personalColorOut-test-banner-text"
-    //                 >[ 日本語バージョンをやりに行く。 ]</a>
-    //                 <a
-    //                     target="_blank"
-    //                     rel="noopener noreferrer"
-    //                     href="https://ktestone.com/kapable.github.io/personalColorEng/"
-    //                     className="to-personalColorOut-test-banner-text"
-    //                 >[ Go to the English version ]</a>
-    //                 <a
-    //                     target="_blank"
-    //                     rel="noopener noreferrer"
-    //                     href="https://ktestone.com/kapable.github.io/personalColorES/"
-    //                     className="to-personalColorOut-test-banner-text"
-    //                 >[ paso a la versión española ]</a>
-    //             </Fragment>
-    //         )
-    //     } else if(this.state.current_test.info.mainUrl === "personalColorES") {
-    //         return(
-    //             <Fragment>
-    //                 <a
-    //                     target="_blank"
-    //                     rel="noopener noreferrer"
-    //                     href="https://ktestone.com/kapable.github.io/personalColor/"
-    //                     className="to-personalColorOut-test-banner-text"
-    //                 >[ 한국어 버전으로 하러가기 ]</a>
-    //                 <a
-    //                     target="_blank"
-    //                     rel="noopener noreferrer"
-    //                     href="https://ktestone.com/kapable.github.io/personalColorJP/"
-    //                     className="to-personalColorOut-test-banner-text"
-    //                 >[ 日本語バージョンをやりに行く。 ]</a>
-    //                 <a
-    //                     target="_blank"
-    //                     rel="noopener noreferrer"
-    //                     href="https://ktestone.com/kapable.github.io/personalColorEng/"
-    //                     className="to-personalColorOut-test-banner-text"
-    //                 >[ Go to the English version ]</a>
-    //                 <a
-    //                     target="_blank"
-    //                     rel="noopener noreferrer"
-    //                     href="https://niair.xyz/kapable.github.io/personalColorCN/"
-    //                     className="to-personalColorOut-test-banner-text"
-    //                 >[ 汉语版本试 ]</a>
-    //             </Fragment>
-    //         )
-    //     }
-    // }
+
 
     introPageRender(){
 
@@ -301,13 +98,11 @@ class Intro extends Component {
         return (
             <div className="intro container">
                 <Helmet>
-                    {/* <!-- Primary Meta Tags --> */}
                     <title>{this.state.current_test.info.mainTitle}-ALBA</title>
                     <meta name="title" content={this.state.current_test.info.mainTitle+'-by LeeLee'}/>
                     <meta name="description" content={this.state.current_test.info.subTitle} data-react-helmet="true"/>
                     <link rel="main-url" href={this.state.quiz_url}/>
 
-                    {/* <!-- Open Graph / Facebook --> */}
                     <meta property="og:type" content="website"/>
                     <meta property="og:url" content={this.state.quiz_url}/>
                     <meta property="og:title" content={this.state.current_test.info.mainTitle}/>
@@ -315,7 +110,6 @@ class Intro extends Component {
                     <meta property="og:image" content={this.state.current_test.info.mainImage}/>
                     <meta property="og:image:alt" content={this.state.current_test.info.mainTitle} />
 
-                    {/* <!-- Twitter --> */}
                     <meta property="twitter:card" content="summary_large_image"/>
                     <meta property="twitter:url" content={this.state.quiz_url}/>
                     <meta property="twitter:title" content={this.state.current_test.info.mainTitle}/>
@@ -328,16 +122,7 @@ class Intro extends Component {
                     onClick={this._onStartButtonClick}
                     src={_thumbImage}
                     alt={_mainTitle + '|' + _subTitle}/>
-                {/*{this.personalColorLinkRenderer()}*/}
-                {/*<Typist className="start-btn-participants">*/}
-                {/*    현재까지 총 {this.state.participants}명이 참여했어요.*/}
-                {/*</Typist>*/}
 
-                {/* CPC Banner Intro footer */}
-                {/*{this.cpcBannerIntroFooterScriptor()}*/}
-                {/**/}
-                {/* BMAF Button */}
-                {/*<BuyMeACoffee/>*/}
 
                 <div className="test-intro-with-friend">
                     <CopyToClipboard text={this.state.quiz_url+'/'}>
@@ -350,13 +135,7 @@ class Intro extends Component {
                         </Button>
                     </CopyToClipboard>
                 </div>
-                {/*<div className="test-intro-to-main">*/}
-                {/*    <img*/}
-                {/*        className="test-intro-to-main-img"*/}
-                {/*        src={BACKBTN}*/}
-                {/*        onClick={this._onMainButtonClick}*/}
-                {/*        alt="다른 테스트 하러 뒤로가기"/>*/}
-                {/*</div>*/}
+
             </div>
         );
     }
@@ -393,7 +172,6 @@ class Intro extends Component {
         } else if (this.state.scoreType === "typeCountingMBTI") {
             let final_result_obj = this.state.answer_type_obj;
 
-            // for creating an array which contains VS between types ex.["EI", "SN", "TF", "JP"]
             function onlyUnique(value, index, self) {
                 return self.indexOf(value) === index;
               }
@@ -403,17 +181,14 @@ class Intro extends Component {
             }
             _which_type_arr = _which_type_arr.filter(onlyUnique);
 
-            // get max value & type from Each VS
             let final_type = '';
             for(let i=0; i<_which_type_arr.length; i++){
                 let first_type = _which_type_arr[i][0]
                 let second_type = _which_type_arr[i][1]
                 let type_arr = [first_type, second_type]
                 let max_val = 0
-                // for split in case of odd | even questions in the same which(ex. EI/SN..)
                 if(final_result_obj[first_type] !== final_result_obj[second_type]) {
                     max_val = Math.max(final_result_obj[first_type], final_result_obj[second_type])
-                    // eslint-disable-next-line
                     type_arr.filter(item => final_result_obj[item] === max_val).forEach(item => final_type += item)
                 } else {
                     final_type += type_arr[0]
@@ -421,7 +196,6 @@ class Intro extends Component {
 
             }
 
-            // return 'THE' result TYPE from TESTS.js
             for (let z=0;z<this.state.current_test.results.length;z++){
                 if(final_type === this.state.current_test.results[z].type){
                     return this.state.current_test.results[z]
@@ -439,7 +213,6 @@ class Intro extends Component {
     }
     quizPageRender(){
         if(this.state.mode === "quiz"){
-            // when the type is cummulative number scoring
             if (this.state.scoreType === "numberScoring" || this.state.scoreType === "numberScoringImg") {
                 let _page = <Quiz
                 qAndA={this.state.qAndA}
@@ -457,7 +230,6 @@ class Intro extends Component {
                 return(
                     _page
                 )
-            // when the type is each type counting
             } else if (this.state.scoreType === "typeCounting") {
                 let _page = <Quiz
                 qAndA={this.state.qAndA}
@@ -535,16 +307,14 @@ class Intro extends Component {
                 <Loading />
                 {setTimeout(function(){
                     this.setState({mode:"result"})
-                }.bind(this), 1000)}
+                }.bind(this), 4700)}
             </div>
         )
     }
 
     resultPageRender(){
-        console.log("여기까지 로드가 된다")
-        // go to result page
         let result_contents = this.resultCaculator();
-        let final_score_query = result_contents.query // <----------------query export
+        let final_score_query = result_contents.query
         return(
             <Router basename={ this.state.current_test.info.mainUrl}>
                 <Route path={this.state.result_url+final_score_query} component={Result}/>

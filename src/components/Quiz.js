@@ -10,18 +10,16 @@ class Quiz extends Component {
             quizCount:0,
         }
     }
-    // the function below is for option randomize
+
     arrayShuffler(array){
         var currentIndex = array.length, temporaryValue, randomIndex;
           
-        // While there remain elements to shuffle...
         while (0 !== currentIndex) {
         
-            // Pick a remaining element...
+
             randomIndex = Math.floor(Math.random() * currentIndex);
             currentIndex -= 1;
         
-            // And swap it with the current element.
             temporaryValue = array[currentIndex];
             array[currentIndex] = array[randomIndex];
             array[randomIndex] = temporaryValue;
@@ -46,7 +44,7 @@ class Quiz extends Component {
         var i = 0;
         var nextQuizNum = this.props.quizNum + 1;
         while(i < qAndA.answers.length){
-            // when the type is cummulative number scoring
+
             if(this.props.scoreType === "numberScoring" || this.props.scoreType === "numberScoringImg"){
                 _questions.push(
                     <Button
@@ -55,10 +53,10 @@ class Quiz extends Component {
                         onClick={function(e) {
                             e.preventDefault();
                             if(this.props.quizNum === this.props.qAndA.length-1){
-                                this.props.onChangeMode(nextQuizNum, e.target.value, "loading"); //result
+                                this.props.onChangeMode(nextQuizNum, e.target.value, "loading");
                             } else {
                                 this.setState({
-                                    quizCount:this.state.quizCount+1 // for Quiz Counting => QuestionCount.js
+                                    quizCount:this.state.quizCount+1
                                 })
                                 this.props.onChangeMode(nextQuizNum, e.target.value, "quiz");
                             }
@@ -67,7 +65,6 @@ class Quiz extends Component {
                         size="lg"
                         className="option-btn"
                     >{qAndA.answers[i].content}</Button>)
-            // when the type is each type counting
             } else if (this.props.scoreType === "typeCounting"){
                 _questions.push(
                     <Button
@@ -75,12 +72,12 @@ class Quiz extends Component {
                         value={qAndA.answers[i].type}
                         onClick={function(e) {
                             e.preventDefault();
-                            // 마지막 질문이라는 뜻이네
+
                             if(this.props.quizNum === this.props.qAndA.length-1){
-                                this.props.onChangeMode(nextQuizNum, e.target.value, "loading"); //result
+                                this.props.onChangeMode(nextQuizNum, e.target.value, "loading");
                             } else {
                                 this.setState({
-                                    quizCount:this.state.quizCount+1 // for Quiz Counting => QuestionCount.js
+                                    quizCount:this.state.quizCount+1
                                 })
                                 this.props.onChangeMode(nextQuizNum, e.target.value, "quiz");
                             }
@@ -97,10 +94,10 @@ class Quiz extends Component {
                         onClick={function(e) {
                             e.preventDefault();
                             if(this.props.quizNum === this.props.qAndA.length-1){
-                                this.props.onChangeMode(nextQuizNum, e.target.value, "loading"); //result
+                                this.props.onChangeMode(nextQuizNum, e.target.value, "loading");
                             } else {
                                 this.setState({
-                                    quizCount:this.state.quizCount+1 // for Quiz Counting => QuestionCount.js
+                                    quizCount:this.state.quizCount+1
                                 })
                                 this.props.onChangeMode(nextQuizNum, e.target.value, "quiz");
                             }
@@ -112,7 +109,7 @@ class Quiz extends Component {
             } 
             i = i + 1;
         }
-        _questions = this.arrayShuffler(_questions) // randomize answer option btn
+        _questions = this.arrayShuffler(_questions)
         return(
             _questions
         )
@@ -122,7 +119,7 @@ class Quiz extends Component {
         return(
             <Fragment>
                 <Question question={this.props.qAndA[this.props.quizNum].question}></Question>
-                {/* In case of Quiz with Image Options */}
+
                 <Fragment>
                     {this.renderImgAnswerOptions()}
                 </Fragment>

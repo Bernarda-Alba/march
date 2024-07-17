@@ -96,7 +96,6 @@ fabric.properties
 
 .gradle/
 .idea/
-build/
 gradle/
 # 이거 gradle 용으로 아무래도 필요해보이는 파일 같다
 #gradlew

@@ -1,7 +1,7 @@
 {
   "name": "personality-test",
   "version": "1.1.1",
-  "homepage": "http://bernarda-alba.github.io/march",
+  "homepage": "http://albaofspain.github.io/march",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",

@@ -266,7 +266,7 @@ var TESTS = [
                 query: "fifth",
                 score_range:range(26),
                 img_src:'https://user-images.githubusercontent.com/35620531/109660294-05fd2680-7bac-11eb-9c8a-98faa4ba7f19.png',
-                real_meta: 'https://user-images.githubusercontent.com/35620531/109660294-05fd2680-7bac-11eb-9c8a-98faa4ba7f19.png'
+                real_meta: 'https://raw.githubusercontent.com/albaofspain/alba-2021/master/src/result/adela.html'
             },
             {
                 type: "마르띠리오",
@@ -274,7 +274,7 @@ var TESTS = [
                 query: "fourth",
                 score_range:range(26, 51),
                 img_src:'https://user-images.githubusercontent.com/35620531/109660461-3d6bd300-7bac-11eb-8377-d56d2ed46070.png',
-                real_meta: 'https://user-images.githubusercontent.com/35620531/109660461-3d6bd300-7bac-11eb-8377-d56d2ed46070.png'
+                real_meta: 'https://raw.githubusercontent.com/albaofspain/alba-2021/master/src/result/adela.html'
             },
             {
                 type: "아멜리아",

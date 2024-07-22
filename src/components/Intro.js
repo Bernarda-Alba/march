@@ -299,7 +299,7 @@ class Intro extends Component {
         let final_score_query = result_contents.query
         console.log(final_score_query)
         return(
-            <Router basename={ 'march/' + this.state.current_test.info.mainUrl}>
+            <Router basename={ 'alba-2021/' + this.state.current_test.info.mainUrl}>
                 <Route path={this.state.result_url+final_score_query} render={() => <Result meta={result_contents.real_meta}/>}/>
                 <Redirect to={this.state.result_url+final_score_query} />
             </Router>
